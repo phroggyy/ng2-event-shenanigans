@@ -1,0 +1,36 @@
+.date-picker__date {
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height:40px;
+    &:hover:not(.bg-primary) {
+        background-color: #eeeeee;
+    }
+}
+
+.date-picker__picker {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.date-picker__date--non-current-month {
+    span {
+        color: #cccccc;
+    }
+}
+
+.date-picker__date--today {
+    background-color: #f5f5f5;
+}
+
+.date-picker__month-switcher {
+    cursor: pointer;
+}
+
+.date-picker__preview {
+    color: white;
+}
+
+.date-picker__preview-value {
+    flex-grow: 1;
+}

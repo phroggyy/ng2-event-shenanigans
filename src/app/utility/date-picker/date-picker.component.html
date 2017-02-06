@@ -1,0 +1,28 @@
+<div fxLayout="row">
+    <div fxLayout="column" fxFlex="60" class="date-picker__picker">
+        <header fxLayout="row" fxLayoutAlign="space-between">
+            <md-icon class="date-picker__month-switcher" (click)="lastMonth()">navigate_before</md-icon>
+            {{ currentView.format('MMMM') }}
+            <md-icon class="date-picker__month-switcher" (click)="nextMonth()">navigate_next</md-icon>
+        </header>
+        <div fxLayout="column" fxLayoutAlign="center" class="dates">
+            <div fxLayout="row" fxLayoutAlign="space-between" *ngFor="let week of daysInMonthByWeek();">
+                <div class="date-picker__date"
+                     *ngFor="let day of week.days"
+                     [class.date-picker__date--non-current-month]="! day.isSame(currentView, 'month')"
+                     [class.date-picker__date--today]="day.isSame(currentView, 'day')"
+                     [class.bg-primary]="day.isSame(selected.from)"
+                     [class.date-picker__date--in-range]="shouldIndicateRange(day)"
+                     (click)="selectedDate(day)"
+                     (mouseenter)="hoveredDate(day)"
+                     fxLayoutAlign="center center"><span>{{ day.format('D') }}</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="date-picker__preview bg-primary-lighter" fxLayout="column" fxFlex="40">
+        <div class="date-picker__preview-value" fxLayoutAlign="center center">
+            <h3>{{ selected.from ? selected.from.format('D MMMM') : 'Now' }}</h3>
+        </div>
+        <button type="button" md-button>Select</button>
+    </div>
+</div>
